@@ -1,0 +1,35 @@
+{
+	"manifest_version": 2,
+
+	"name": "2d4me",
+	"version": "0.0.1",
+	
+	"description": "anime tiddies",
+
+	"background": {
+		"scripts": ["js/lib/localforage.nopromises.min.js", "js/background.js"]
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["http://exhentai.org/*", "http://g.e-hentai.org/*"],
+			"js": ["js/contentscript-start.js"],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["http://exhentai.org/*", "http://g.e-hentai.org/*"],
+			"js": ["js/contentscript-end.js"],
+			"run_at": "document_end"
+		}
+	],
+	"web_accessible_resources": [
+		"img/*.png"
+	],
+
+	"permissions": [
+		"tabs",
+		"unlimitedStorage",
+		"http://exhentai.org/*",
+		"http://g.e-hentai.org/*"
+	]
+}
